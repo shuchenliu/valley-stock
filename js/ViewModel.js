@@ -19,14 +19,6 @@ const ViewModel = () => {
       markers.push(marker)
       
       marker.addListener('click', function(e) {
-        // set marker opacity
-        marker.setOpacity(1);
-        markers.forEach(otherMarker => {
-          if (otherMarker !== marker) {
-            otherMarker.setOpacity(0.4);
-          }
-        });
-        
         // Pan to company selected
         self.panToCompany(eachCompany);
       });
@@ -45,6 +37,17 @@ const ViewModel = () => {
     }
     
     self.panToCompany = company => {
+      // Set up marker opacity change
+      const marker = company.marker;
+
+      marker.setOpacity(1);
+      markers.forEach(otherMarker => {
+        if (otherMarker !== marker) {
+          otherMarker.setOpacity(0.4);
+        }
+      });
+      
+      // Pan to company location
       const loc = company.loc();
       
       map.panTo({

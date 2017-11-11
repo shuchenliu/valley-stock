@@ -40,9 +40,15 @@
                ></i> 
         </li>
         <li class="info hidden"
-            data-bind="css: {
+            data-bind="
+              event: {
+                click: () => {
+                  panToCompany($data);
+                }
+              },
+              css: {
               hidden: !showDetails()
-            }">
+            },">
             
         </li>
       </ul>
