@@ -19,7 +19,12 @@
   <body>
 
     <div class='sidebar hide'>
-      <a class='closeButton'>
+      <a class='closeButton'
+         data-bind="event: {
+                  click: () => {
+                    toggleDetails(undefined);
+                  },
+                }">
         &times;
       </a>
       <ul data-bind="foreach: companyList">
@@ -89,7 +94,7 @@
             </li>
             
             <li class="button">
-              <a class="btn btn-primary" target="_blank" href="https://github.com/shuchenliu" >
+              <a class="btn btn-primary" target="_blank" href="https://github.com/shuchenliu/valley-stock" >
                   <i class="fa fa-code fa-1x" aria-hidden="true"></i>
               </a>
             </li>         
