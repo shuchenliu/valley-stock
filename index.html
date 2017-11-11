@@ -2,28 +2,101 @@
 <html>
   <head>
     <title>Valley Stock</title>
-    <meta name="viewport" content="initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta charset="utf-8">
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
-    <script src="./js/Model.js"></script>
-    <script src="./js/app.js"></script>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "./css/style.css" />
+          
+    <link rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+          
+    <link href="https://fonts.googleapis.com/css?family=Fenix|Lobster" rel="stylesheet">
   </head>
+  
+  
   <body>
-    <div id="map"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWvzz43sL2Z2Kp_n9Zzkb4liGwgIxQxzM&callback=initMap"
+
+    <div class='sidebar hide'>
+      <a class='closeButton'>
+        &times;
+      </a>
+      <ul data-bind="foreach: companyList">
+        <li class="holder"
+            data-bind="event: {
+                        click: () => {
+                          toggleDetails($data);
+                        },
+                      }">
+            <span data-bind="text: name"
+               class="item fenix">
+            </span> 
+            <i class="fa fa-angle-right fa-1x" 
+               aria-hidden="true"
+               data-bind="css: {
+                 rotate: showDetails
+               }"
+               ></i> 
+        </li>
+        <li class="info hidden"
+            data-bind="css: {
+              hidden: !showDetails()
+            }">
+            
+        </li>
+      </ul>
+    </div>
+  
+    <div class="page">
+      
+      <div class='navbar'>
+        <ul>
+            <li id='filter'>
+              <a>
+                <i class="fa fa-filter" aria-hidden="true"></i>
+                <span class="desktop fenix">filter</span>
+              </a>
+            </li>
+            <li>
+        </ul>
+        <ul class='sign'>
+              <a>
+                <span class="desktop lobster">Valley Companies' Stock Price</span>
+                <span class="mobile lobster">Valley Stock</span>
+                <span class="superMobile lobster">VS</span>
+              </a>
+            </li>  
+        </ul>
+    
+        <ul>
+            <li class="button">
+              <a class="btn btn-primary" target="_blank" href="https://www.linkedin.com/in/shuchenliu" >
+                <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
+              </a>
+            </li>
+            
+            <li class="button">
+              <a class="btn btn-primary" target="_blank" href="https://github.com/shuchenliu" >
+                <i class="fa fa-github-square fa-lg" aria-hidden="true"></i>
+              </a>
+            </li>
+            
+            <li class="button">
+              <a class="btn btn-primary" target="_blank" href="https://github.com/shuchenliu" >
+                  <i class="fa fa-code fa-1x" aria-hidden="true"></i>
+              </a>
+            </li>         
+        </ul>
+      </div>
+      <div id="map"></div>
+    </div>
+    
+    <script src="./js/Map.js"></script>
+    <script src="./js/Model.js"></script>
+    <script src="./js/View.js"></script>
+    <script src="./js/ViewModel.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWvzz43sL2Z2Kp_n9Zzkb4liGwgIxQxzM&callback=startApp"
     async defer></script>
   </body>
 </html>

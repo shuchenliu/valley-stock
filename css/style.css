@@ -1,0 +1,223 @@
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+  height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+@media only screen  
+  and (max-device-width : 319px){
+  .desktop{
+    display: none;
+  }
+  .mobile{
+    display: none;
+  }
+}
+
+@media only screen  
+and (min-device-width : 320px)
+  and (max-device-width : 679px){
+  .desktop{
+    display: none;
+  }
+  .superMobile{
+    display: none;
+  }
+} 
+
+
+@media only screen 
+  and (min-device-width: 680px){
+  .mobile{
+    display: none;
+  }
+  .superMobile{
+    display: none;
+  }
+} 
+
+.navbar {
+  z-index: 2;
+  display:inline;
+  width: 100%;
+  display:flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  overflow: hidden;
+  justify-content: space-between;
+  background-color: #111;
+  box-shadow: .5px .5px .5px #111;
+  height: 43px;
+  position: absolute;
+}
+
+.navbar ul {
+  list-style-type: none;
+  overflow: hidden;
+  margin: 0;  
+  padding-left: 0;
+}
+
+.navbar li {
+  padding-top: 5px;
+  transition: 0.2s;
+  display:inline-block;
+}
+
+
+.navbar li a {
+  display:block;
+  color: white;
+  padding: 10px 10px;
+}
+
+.navbar .button:hover {
+  background: #1DA1F2;
+}
+
+.sidebar {
+    height: 100%;
+    width: 200px;
+    position: absolute;
+    z-index: 4;
+    top: 43px;
+    left: 0;
+    background-color: #353538;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    transform: translate3d(0, 0, 0); 
+}
+
+
+
+.lobster {
+  font-family: 'Lobster', cursive;
+}
+
+.fenix {
+  font-family: 'Fenix', sans-serif; 
+}
+
+.sign {
+  font-size: 20px;
+  color: white;
+  padding-top: 10px !important;
+}
+
+.filter-button {
+  height: 20%;
+  margin:0 0 5px 5px;
+  border-radius: 5px;
+  background-color: #1DA1F2;
+  padding: 5px 10px 5px 10px !important;
+}
+
+
+#filter:hover {
+  cursor:pointer;
+}
+
+
+.closeButton {
+  position: absolute;
+    top: 0;
+    right: 8px;
+    font-size: 30px;
+    margin-left: 50px;
+    color: #555459;
+}
+
+.closeButton:hover {
+  cursor: pointer;
+  color: white; 
+}
+
+.page {
+  height: 100%;
+  position: relative;
+}
+
+.hide {
+  transform: translate3d(-15em, 0, 0);
+  transition: transform 0.5s;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.sidebar .holder {
+  padding: 8px 10px 8px 30px;
+  border-bottom: 1px solid #1f1f21;
+  border-top: thin solid #555459;
+  
+  display:flex;
+  flex-flow: row;
+  justify-content: space-between;
+  z-index: 7;
+}
+
+.sidebar .holder:hover {
+  background-color: #1DA1F2;
+}
+
+.sidebar .item {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.sidebar i {
+  padding-top: 5px;
+  color: #555459;
+  /* Firefox */
+	-moz-transition: all 0.5s ease;
+	/* WebKit */
+	-webkit-transition: all 0.5s ease;
+	/* Opera */
+	-o-transition: all 0.5s ease;
+	/* Standard */
+	transition: all 0.5s ease;
+}
+
+.sidebar .rotate {
+  transform: rotate(90deg);
+  color: white;
+}
+
+.sidebar .info {
+  padding: 0;
+  background-color: grey;
+  
+  -moz-transition: all 0.5s ease;
+	/* WebKit */
+	-webkit-transition: all 0.5s ease;
+	/* Opera */
+	-o-transition: all 0.5s ease;
+	/* Standard */
+  transition: height 0.5s, visibility 0.2s ease-out;
+  height: 100px;
+  visibility: visible;
+  z-index: 6;
+}
+
+.sidebar .hidden {
+  visibility: hidden;
+  height: 0px;
+  opacity: 1;
+}
+
+
+.grayscale {
+  -webkit-filter: grayscale(98%);
+  filter: grayscale(98%);
+}

@@ -1,12 +1,19 @@
 let map;
-function initMap(){
+
+// Module that smooths the zoom-in process 
+// when a company is selected
+
+
+const initMap = function(){
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 37.5242092, lng: -122.254427},
+    center: {lat: 37.6106427, lng: -122.4478837},
     zoom: 10,
-    maxZoom: 13,
+    maxZoom: 15,
     minZoom: 10,
     zoomControl: true,
     mapTypeControl: false,
+    streetViewControl: false,
+    fullscreenControl: false,
     styles: [
         {
             "stylers": [
@@ -113,17 +120,14 @@ function initMap(){
     ],
   });
   
-  companies.forEach(company => {
-    const icon = {
-      url: company.icon.url,
-      scaledSize: new google.maps.Size(company.icon.width, company.icon.height),
-    };
-    
-    const marker = new google.maps.Marker({
-      map: map,
-      position: company.loc,
-      title: company.name,
-      icon: icon,
-    });
+
+  
+  google.maps.event.addListener(map, 'zoom_changed', () => {
+    if (map.getZoom() === 10) {
+      markers.forEach(marker => {
+        marker.setOpacity(1);
+      });
+    }
   });
+  
 };
