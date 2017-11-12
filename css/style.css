@@ -207,7 +207,7 @@ and (min-device-width : 320px)
 	/* Opera */
 	-o-transition: all 0.5s ease;
 	/* Standard */
-  transition:  height 0.35s, visibility 0.35s ease-out;
+  transition:  all 0.35s ease-out;
   height: 30px;
   visibility: visible;
   z-index: 6;
@@ -220,6 +220,11 @@ and (min-device-width : 320px)
   visibility: hidden;
   height: 0px;
   padding: 0px;
+}
+
+.info:hover {
+  cursor: pointer;
+  color: #1DA1F2;
 }
 
 .hidden .content {
@@ -235,9 +240,7 @@ and (min-device-width : 320px)
   flex-wrap: nowrap;
 }
 
-.content:hover {
-  cursor: pointer;
-}
+
 
 .content .addr {
   font-size: 18px;

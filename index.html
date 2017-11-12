@@ -43,20 +43,15 @@
               event: {
                 click: () => {
                   panToCompany($data);
-                }
+                },
+                mouseover: toggleSelected,
+                mouseout: toggleSelected
               },
               css: {
-              hidden: !showDetails()
+              hidden: !showDetails(),
+              'hide-arrow': !selected()
             }">
-            <span class="content"
-                  data-bind="
-                  event: {
-                    mouseover: toggleSelected,
-                    mouseout: toggleSelected
-                  },
-                  css: {
-                    'hide-arrow': !selected()
-                  }">
+            <span class="content">
               <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
               <span
               class="addr fenix"
