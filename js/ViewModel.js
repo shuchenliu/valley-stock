@@ -25,6 +25,13 @@ const ViewModel = () => {
     });
     
     
+    google.maps.event.addListener(map, 'zoom_changed', () => {
+      if (map.getZoom() === 10) {
+        markers.forEach(marker => {
+          marker.setOpacity(1);
+        });
+      }
+    });
     
     // click event handlers
     self.currentCompany = undefined;

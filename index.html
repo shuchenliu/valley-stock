@@ -64,7 +64,11 @@
       <div class='navbar'>
         <ul>
             <li id='filter'>
-              <a>
+              <a data-bind="event: {
+                       click: () => {
+                         toggleDetails(currentCompany);
+                       },
+                     }">
                 <i class="fa fa-filter" aria-hidden="true"></i>
                 <span class="desktop fenix">filter</span>
               </a>

@@ -119,15 +119,6 @@ const initMap = function(){
         }
     ],
   });
-  
 
-  
-  google.maps.event.addListener(map, 'zoom_changed', () => {
-    if (map.getZoom() === 10) {
-      markers.forEach(marker => {
-        marker.setOpacity(1);
-      });
-    }
-  });
   
 };
