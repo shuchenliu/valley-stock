@@ -83,7 +83,7 @@ and (min-device-width : 320px)
 
 .sidebar {
     height: 100%;
-    width: 200px;
+    width: 250px;
     position: absolute;
     z-index: 4;
     top: 43px;
@@ -119,6 +119,9 @@ and (min-device-width : 320px)
   padding: 5px 10px 5px 10px !important;
 }
 
+#filter .desktop {
+  font-size: 18px;
+}
 
 #filter:hover {
   cursor:pointer;
@@ -145,7 +148,7 @@ and (min-device-width : 320px)
 }
 
 .hide {
-  transform: translate3d(-15em, 0, 0);
+  transform: translate3d(-20em, 0, 0);
   transition: transform 0.5s;
 }
 
@@ -176,7 +179,7 @@ and (min-device-width : 320px)
   cursor: pointer;
 }
 
-.sidebar i {
+.sidebar .arrow {
   padding-top: 5px;
   color: #555459;
   /* Firefox */
@@ -195,8 +198,8 @@ and (min-device-width : 320px)
 }
 
 .sidebar .info {
-  padding: 0;
-  background-color: grey;
+  padding: 5px;
+  background-color: #c3c6cc;
   
   -moz-transition: all 0.5s ease;
 	/* WebKit */
@@ -204,18 +207,36 @@ and (min-device-width : 320px)
 	/* Opera */
 	-o-transition: all 0.5s ease;
 	/* Standard */
-  transition: height 0.5s, visibility 0.2s ease-out;
-  height: 100px;
+  transition:  height 0.35s, visibility 0.35s ease-out;
+  height: 30px;
   visibility: visible;
   z-index: 6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.sidebar .hidden {
+.hidden.info {
   visibility: hidden;
   height: 0px;
-  opacity: 1;
+  padding: 0px;
 }
 
+.hidden .content {
+  visibility: hidden;
+  height: 0px;
+}
+
+.content {
+  visibility: visible;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content .addr {
+  font-size: 18px;
+}
 
 .grayscale {
   -webkit-filter: grayscale(98%);

@@ -27,6 +27,8 @@ class Company{
     this.city = ko.observable(data.city);
     this.icon = ko.observable(data.icon);
     this.loc = ko.observable(data.loc);
+    this.address = ko.observable(data.address);
+    
     this.showDetails = ko.observable(false);
     
     
@@ -58,6 +60,7 @@ const companies = [
       width: 40,
       height: 40,
     },
+    address: '1 Hacker Way',
     city: 'Menlo Park',
   },
   {
@@ -68,6 +71,7 @@ const companies = [
       width: 40,
       height: 40,
     },
+    address: '1600 Amphitheatre Pkwy',
     city: 'Mountain View',
   },
   {
@@ -78,6 +82,7 @@ const companies = [
       width: 55,
       height: 40,
     },
+    address: '100 Winchester Cir',
     city: 'Las Gatos',
   },
   {
@@ -88,6 +93,7 @@ const companies = [
       width: 35,
       height: 40,
     },
+    address: '1 Infinite Loop',
     city: 'Cupertino',
   },
   {
@@ -98,6 +104,7 @@ const companies = [
       width: 60,
       height: 40,
     },
+    address: '170 W Tasman Dr',
     city: 'San Jose',
   },
   {
@@ -108,6 +115,7 @@ const companies = [
       width: 60,
       height: 60,
     },
+    address: '1355 Market St',
     city: 'San Francisco',
   },
   {
@@ -118,6 +126,7 @@ const companies = [
       width: 90,
       height: 60,
     },
+    address: '140 New Montgomery St',
     city: 'San Francisco',
   },
   {
@@ -128,6 +137,7 @@ const companies = [
       width: 30,
       height: 30,
     },
+    address: '1455 Market St',
     city: 'San Francisco',
   },
   {
@@ -138,6 +148,7 @@ const companies = [
       width: 40,
       height: 50,
     },
+    address: '699 8th St',
     city: 'San Francisco',
   },
 ];
