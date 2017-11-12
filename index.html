@@ -37,12 +37,6 @@
             <span data-bind="text: name"
                class="item fenix">
             </span> 
-            <i class="arrow fa fa-angle-right fa-1x" 
-               aria-hidden="true"
-               data-bind="css: {
-                 rotate: showDetails
-               }"
-               ></i> 
         </li>
         <li class="hidden info"
             data-bind="
@@ -54,13 +48,22 @@
               css: {
               hidden: !showDetails()
             }">
-            <span class="content">
+            <span class="content"
+                  data-bind="
+                  event: {
+                    mouseover: toggleSelected,
+                    mouseout: toggleSelected
+                  },
+                  css: {
+                    'hide-arrow': !selected()
+                  }">
               <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
               <span
               class="addr fenix"
               data-bind="text: $data.address()"></span>
+              <i class="fa fa-chevron-right fa-lg" aria-hidden="true"></i>
             </span>
-            
+              
         </li>
           
       </ul>

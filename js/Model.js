@@ -31,7 +31,11 @@ class Company{
     
     this.showDetails = ko.observable(false);
     
+    this.selected = ko.observable(false);
     
+    this.toggleSelected = () => {
+      this.selected(!this.selected());
+    }
     
     // Create marker for each company
     const icon = {

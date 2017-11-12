@@ -43,6 +43,7 @@ const ViewModel = () => {
       });
     }
     
+    
     self.panToCompany = company => {
       // Set up marker opacity change
       const marker = company.marker;

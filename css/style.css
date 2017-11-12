@@ -229,13 +229,30 @@ and (min-device-width : 320px)
 
 .content {
   visibility: visible;
-  width: 90%;
+  width: 95%;
   display: flex;
   justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.content:hover {
+  cursor: pointer;
 }
 
 .content .addr {
   font-size: 18px;
+}
+
+.hide-arrow .fa-chevron-right {
+  width: 0px;
+  visibility: hidden;
+}
+
+.fa-chevron-right {
+  width: 10px;
+  visibility: visible;
+  transition: all 0.35s ease-out;
+  margin-top: 2px;
 }
 
 .grayscale {
