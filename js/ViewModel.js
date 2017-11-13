@@ -128,7 +128,7 @@ const ViewModel = () => {
       
       map.panTo({
         lat: loc.lat,
-        lng: loc.lng + 0.005,
+        lng: loc.lng,
       });
       
       smoothZoomIn(map.getZoom(), 15, function() {
