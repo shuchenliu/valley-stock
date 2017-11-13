@@ -18,7 +18,6 @@ const ViewModel = () => {
     
     
     self.filteredCompanyList = ko.computed(() => {
-      console.log(self.showCity());
       if (self.showCity() == 'all') {
         return self.companyList();
       }
@@ -54,10 +53,27 @@ const ViewModel = () => {
     
     // Markers handling
     const allMarkers = [];
+    self.cities = ko.observableArray([]);
+    self.cities.push('all');
+    
+    self.selected = ko.observable();
+    
+    selected.subscribe(value => {
+      self.setShowCity(value);
+    });
     
     ko.utils.arrayForEach(self.companyList(), eachCompany => {
       const marker = eachCompany.marker;
       allMarkers.push(marker);
+      
+      
+      // push city
+      const city = eachCompany.city();
+      
+      if (self.cities.indexOf(city) < 0) {
+        self.cities.push(city);
+      }
+      
       
       marker.addListener('click', function(e) {
         // Pan to company selected
@@ -94,7 +110,6 @@ const ViewModel = () => {
 
       marker.setOpacity(1);
       
-      console.log(allMarkers);
       allMarkers.forEach(otherMarker => {
         if (otherMarker !== marker) {
           otherMarker.setOpacity(0.4);
@@ -121,4 +136,9 @@ const ViewModel = () => {
 function startApp() {
     initMap();
     ko.applyBindings(ViewModel);
+    
+    // semantic-ui
+    $('#search-select')
+      .dropdown()
+    ;
 };

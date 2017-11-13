@@ -107,7 +107,7 @@ and (min-device-width : 320px)
 
 .sign {
   font-size: 20px;
-  color: white;
+  color: white !important;
   padding-top: 10px !important;
 }
 
@@ -262,4 +262,11 @@ and (min-device-width : 320px)
 .grayscale {
   -webkit-filter: grayscale(98%);
   filter: grayscale(98%);
+}
+
+
+.ui.search.selection.dropdown {
+  height:10px !important;
+  left: 5% !important;
+  width: 90% !important;
 }
