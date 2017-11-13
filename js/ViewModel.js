@@ -11,12 +11,53 @@ const ViewModel = () => {
       self.companyList.push(new Company(data));
     });
     
+    
+    
+    // Filter method
+    self.showCity = ko.observable('all');
+    
+    
+    self.filteredCompanyList = ko.computed(() => {
+      console.log(self.showCity());
+      if (self.showCity() == 'all') {
+        return self.companyList();
+      }
+      
+      return ko.utils.arrayFilter(self.companyList(), eachCompany => {
+        return self.showCity() == eachCompany.city();
+      });
+    });
+    
+    
+    
+    
+    self.setShowCity = city => {
+      // Only update when necessary
+      if (city == self.showCity()) {
+        return;
+      }
+      
+      self.showCity(city);
+      
+      
+      // update markers
+      ko.utils.arrayForEach(self.companyList(), eachCompany => {
+        if (city == 'all' || city == eachCompany.city()) {
+          eachCompany.marker.setMap(map);
+        } else {
+          eachCompany.marker.setMap(null);
+        }
+      });
+    };
+    
+    
+    
     // Markers handling
-    const markers = [];
+    const allMarkers = [];
     
     ko.utils.arrayForEach(self.companyList(), eachCompany => {
       const marker = eachCompany.marker;
-      markers.push(marker)
+      allMarkers.push(marker);
       
       marker.addListener('click', function(e) {
         // Pan to company selected
@@ -27,11 +68,14 @@ const ViewModel = () => {
     
     google.maps.event.addListener(map, 'zoom_changed', () => {
       if (map.getZoom() === 10) {
-        markers.forEach(marker => {
+        allMarkers.forEach(marker => {
           marker.setOpacity(1);
         });
       }
     });
+    
+    
+    
     
     // click event handlers
     self.currentCompany = undefined;
@@ -41,7 +85,7 @@ const ViewModel = () => {
       ko.utils.arrayForEach(self.companyList(), (eachCompany) => {
         eachCompany.showDetails(eachCompany === self.currentCompany);
       });
-    }
+    };
     
     
     self.panToCompany = company => {
@@ -49,7 +93,9 @@ const ViewModel = () => {
       const marker = company.marker;
 
       marker.setOpacity(1);
-      markers.forEach(otherMarker => {
+      
+      console.log(allMarkers);
+      allMarkers.forEach(otherMarker => {
         if (otherMarker !== marker) {
           otherMarker.setOpacity(0.4);
         }
@@ -64,7 +110,7 @@ const ViewModel = () => {
       });
       
       smoothZoomIn(map.getZoom(), 15);
-    }
+    };
     
 };
 

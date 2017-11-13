@@ -1,9 +1,7 @@
+// Create map anchor
 let map;
 
-// Module that smooths the zoom-in process 
-// when a company is selected
-
-
+// Create initMap callback
 const initMap = function(){
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 37.6106427, lng: -122.4478837},

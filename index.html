@@ -27,7 +27,8 @@
                 }">
         &times;
       </a>
-      <ul data-bind="foreach: companyList">
+      
+      <ul data-bind="foreach: filteredCompanyList">
         <li class="holder"
             data-bind="event: {
                         click: () => {

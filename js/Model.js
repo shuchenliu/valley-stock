@@ -35,7 +35,7 @@ class Company{
     
     this.toggleSelected = () => {
       this.selected(!this.selected());
-    }
+    };
     
     // Create marker for each company
     const icon = {
@@ -43,14 +43,13 @@ class Company{
       scaledSize: new google.maps.Size(data.icon.width, data.icon.height),
     };
     
-    this.marker = new google.maps.Marker({
+    this.marker = this.marker = new google.maps.Marker({
       map: map,
       position: data.loc,
       title: data.name,
       icon: icon,
     });
-  }
-  
+  }  
 }
 
 

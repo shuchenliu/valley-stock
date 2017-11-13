@@ -249,6 +249,7 @@ and (min-device-width : 320px)
 .hide-arrow .fa-chevron-right {
   width: 0px;
   visibility: hidden;
+  color: black;
 }
 
 .fa-chevron-right {

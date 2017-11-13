@@ -1,5 +1,5 @@
 /*
-* Pure view handlers, no data envolved i.e. no KO.js
+* Pure view handlers written in vanilla js, no data envolved i.e. no KO.js
 */
 
 // utils
