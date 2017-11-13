@@ -130,9 +130,9 @@ and (min-device-width : 320px)
 
 .closeButton {
   position: absolute;
-    top: 0;
+    top: 8px;
     right: 8px;
-    font-size: 30px;
+    font-size: 40px;
     margin-left: 50px;
     color: #555459;
 }
