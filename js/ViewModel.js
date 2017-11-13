@@ -124,7 +124,9 @@ const ViewModel = () => {
         lng: loc.lng + 0.005,
       });
       
-      smoothZoomIn(map.getZoom(), 15);
+      smoothZoomIn(map.getZoom(), 15, function() {
+        company.infoWindow.open(map, company.marker);
+      });
     };
     
 };

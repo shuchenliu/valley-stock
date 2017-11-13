@@ -8,14 +8,16 @@ const parseLoc = str => {
 }
 
 
-const smoothZoomIn = (currentZoom, targetZoom) => {
+const smoothZoomIn = (currentZoom, targetZoom, callback) => {
     		if (currentZoom < targetZoom) {
         		google.maps.event.addListenerOnce(map, 'zoom_changed', () => {
-            		smoothZoomIn(currentZoom + 1, targetZoom);
+            		smoothZoomIn(currentZoom + 1, targetZoom, callback);
             });
 						setTimeout(() => {
             	map.setZoom(currentZoom + 1);
             },150);
+        } else {
+          setTimeout(callback, 800);
         }
 }
 
@@ -43,12 +45,19 @@ class Company{
       scaledSize: new google.maps.Size(data.icon.width, data.icon.height),
     };
     
-    this.marker = this.marker = new google.maps.Marker({
+    this.marker = new google.maps.Marker({
       map: map,
       position: data.loc,
       title: data.name,
       icon: icon,
     });
+    
+    // Create info window for each markers
+    const contentString = `<div class="lobster">${this.name()}</div>`;
+    this.infoWindow = new google.maps.InfoWindow({
+      content: contentString,
+    });
+    
   }  
 }
 
@@ -137,8 +146,8 @@ const companies = [
     loc : parseLoc('37.775772, -122.418108'),
     icon : {
       url : './img/square.png',
-      width: 30,
-      height: 30,
+      width: 40,
+      height: 40,
     },
     address: '1455 Market St',
     city: 'San Francisco',
