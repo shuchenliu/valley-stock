@@ -53,6 +53,7 @@ const ViewModel = () => {
     
     // Markers handling
     const allMarkers = [];
+    const allInfoWindows = [];
     self.cities = ko.observableArray([]);
     self.cities.push('all');
     
@@ -65,7 +66,7 @@ const ViewModel = () => {
     ko.utils.arrayForEach(self.companyList(), eachCompany => {
       const marker = eachCompany.marker;
       allMarkers.push(marker);
-      
+      allInfoWindows.push(eachCompany.infoWindow);
       
       // push city
       const city = eachCompany.city();
@@ -113,6 +114,12 @@ const ViewModel = () => {
       allMarkers.forEach(otherMarker => {
         if (otherMarker !== marker) {
           otherMarker.setOpacity(0.4);
+        }
+      });
+      
+      allInfoWindows.forEach(otherInfoWindow => {
+        if (otherInfoWindow !== company.infoWindow) {
+          otherInfoWindow.close();
         }
       });
       

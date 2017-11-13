@@ -270,3 +270,7 @@ and (min-device-width : 320px)
   left: 5% !important;
   width: 90% !important;
 }
+
+.nameTag {
+  font-size: 50px;
+}

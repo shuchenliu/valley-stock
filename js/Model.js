@@ -53,7 +53,7 @@ class Company{
     });
     
     // Create info window for each markers
-    const contentString = `<div class="lobster">${this.name()}</div>`;
+    const contentString = `<div class="nameTag lobster">${this.name()}</div>`;
     this.infoWindow = new google.maps.InfoWindow({
       content: contentString,
     });
