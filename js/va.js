@@ -15,7 +15,7 @@ const getLastMinuteStock = symbol => {
     //network error
     throw e;
   });
-}
+};
 
 const getLastDayStock = symbol => {
   const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=J1DTQRI3GZ8PKZ8K`;
@@ -33,6 +33,6 @@ const getLastDayStock = symbol => {
     //network error
     throw e;
   });
-}
+};
 
 

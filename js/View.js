@@ -11,7 +11,7 @@ const hideSidebar = e => {
 // adding sidebar listner 
 const filterButton = document.getElementById('filter');
 const sidebar = document.getElementsByClassName('sidebar')[0];
-const closeButton = document.getElementsByClassName('closeButton')[0]
+const closeButton = document.getElementsByClassName('closeButton')[0];
 
 const mapHolder = document.getElementById('map');
 

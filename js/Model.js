@@ -5,7 +5,7 @@ const parseLoc = str => {
     lat: parseFloat(locs[0]),
     lng: parseFloat(locs[1]),
   }
-}
+};
 
 
 const smoothZoomIn = (currentZoom, targetZoom, callback) => {
@@ -19,7 +19,7 @@ const smoothZoomIn = (currentZoom, targetZoom, callback) => {
         } else {
           setTimeout(callback, 800);
         }
-}
+};
 
 //KnockoutJS Model
 

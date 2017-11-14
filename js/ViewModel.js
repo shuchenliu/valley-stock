@@ -168,11 +168,11 @@ const ViewModel = () => {
       } else {
         self.dailyData(data);
       }
-    }
+    };
     
     self.closeStockInfo = () => {
       self.hideStockInfo(true);
-    }
+    };
     
     self.generateStockInfo = company => {
       
@@ -189,7 +189,7 @@ const ViewModel = () => {
           error: e.message,
         }, index);
         self.hideStockInfo(false);
-      }
+      };
       
       //print data
       const handleData = (data, index) => {
@@ -213,9 +213,10 @@ const ViewModel = () => {
           data: newData,
           lastRefreshed: lastRefreshed,
         };
+        
         self.setData(dataPack, index);
         self.hideStockInfo(false);
-      }
+      };
       
       
       // `getStock` methods are defined in va.js  
@@ -252,7 +253,7 @@ const ViewModel = () => {
         self.dailyDataLoaded(true);
       })
       ;
-    }
+    };
 };
 
 
@@ -271,4 +272,4 @@ function startApp() {
 
 function handleMapError() {
   alert('Cannot connect to Google, please try again later');
-}
+};
