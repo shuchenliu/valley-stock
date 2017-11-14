@@ -54,7 +54,8 @@ and (min-device-width : 320px)
   background-color: #111;
   box-shadow: .5px .5px .5px #111;
   height: 43px;
-  position: absolute;
+  position: fixed;
+  top:0;
 }
 
 .navbar ul {
@@ -143,8 +144,11 @@ and (min-device-width : 320px)
 }
 
 .page {
-  height: 100%;
   position: relative;
+  display:flex;
+  flex-flow: row;
+  justify-content: center;
+  width: 100%;
 }
 
 .hide {
@@ -272,5 +276,78 @@ and (min-device-width : 320px)
 }
 
 .nameTag {
-  font-size: 50px;
+  font-size: 40px;
+}
+
+
+.stockInfo {
+  background-color: white;
+  width: 300px;
+  border-radius: 5px;
+  z-index: 3 ;
+  bottom: 5%;
+  height: 200px;
+  position: fixed;
+  
+  transition: all 0.5s ease-in;
+  visibility: visible;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: .5px .5px .5px grey;
+  flex-wrap: wrap;
+}
+
+.hidden.stockInfo {
+  visibility: hidden;
+  height: 0px;
+}
+
+.stockInfo .header {
+  width: 100%;
+  height: 30px;
+  font-size: 15px;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+  background-color: #1DA1F2;
+  color:white;
+}
+
+.stockWindowClose {
+  font-size: 30px;
+  color: white;
+  transition: all 0.1s linear;
+}
+
+.stockWindowClose:hover {
+  color: grey;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+
+.stockInfo .footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  bottom: 0;
+  padding: 5px;
+  background-color: #e5e6e8;
+}
+
+.rblogo {
+  height: 100%
+}
+
+.footer .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color:#23CD99;
 }

@@ -79,12 +79,16 @@ const ViewModel = () => {
       marker.addListener('click', function(e) {
         // Pan to company selected
         self.panToCompany(eachCompany);
+        self.generateStockInfo(eachCompany);
       });
     });
     
     
+    // Reset to initial state
     google.maps.event.addListener(map, 'zoom_changed', () => {
       if (map.getZoom() === 10) {
+        self.hideStockInfo(true);
+        self.selectedCompany(self.companyList()[0]);
         allMarkers.forEach(marker => {
           marker.setOpacity(1);
         });
@@ -95,6 +99,9 @@ const ViewModel = () => {
     
     
     // click event handlers
+    
+    // currentCompany indicates which company's address to be shown,
+    // not to mistaken with selectedCompany
     self.currentCompany = undefined;
     
     self.toggleDetails = target => {
@@ -104,9 +111,13 @@ const ViewModel = () => {
       });
     };
     
+    // selectedCompany indicates which company to pan to
+    
+    self.selectedCompany = ko.observable(self.companyList()[0]);
     
     self.panToCompany = company => {
       // Set up marker opacity change
+      self.selectedCompany(company);
       const marker = company.marker;
 
       marker.setOpacity(1);
@@ -127,7 +138,7 @@ const ViewModel = () => {
       const loc = company.loc();
       
       map.panTo({
-        lat: loc.lat,
+        lat: loc.lat - 0.002,
         lng: loc.lng,
       });
       
@@ -136,6 +147,43 @@ const ViewModel = () => {
       });
     };
     
+    
+    // Stock Info module
+    
+    self.hideStockInfo = ko.observable(true);
+    
+    self.closeStockInfo = () => {
+      self.hideStockInfo(true);
+    }
+    
+    self.generateStockInfo = company => {
+      
+      const errorHandle = e => {
+        console.log(e);
+        self.hideStockInfo(false);
+      }
+      
+      const handleData = data => {
+        console.log(data);
+        self.hideStockInfo(false);
+      }
+      
+      
+      // `getStock` method is defined in va.js  
+      getStock(company.symbol())
+      .then(data => {
+        // not necessarily juice, could contain parameter-related error
+        if (data['Error Message']) {
+          errorHandle(new Error(data['Error Message']));
+        } else {
+          handleData(data);
+        }
+      }).catch(e => {
+        // it could be the network or server, let's handle it either way
+        errorHandle(e);
+      })
+      ;
+    }
 };
 
 
@@ -150,4 +198,5 @@ function startApp() {
     $('#search-select')
       .dropdown()
     ;
+    
 };

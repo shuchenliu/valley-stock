@@ -52,6 +52,7 @@
               event: {
                 click: () => {
                   panToCompany($data);
+                  generateStockInfo($data)
                 },
                 mouseover: toggleSelected,
                 mouseout: toggleSelected
@@ -77,7 +78,7 @@
         
       </select>
     </div>
-  
+   <div id="map"></div>
     <div class="page">
       
       <div class='navbar'>
@@ -122,10 +123,28 @@
             </li>         
         </ul>
       </div>
-      <div id="map"></div>
+      <div class="hidden stockInfo"
+           data-bind="
+           css: {
+             hidden: hideStockInfo,
+           }">
+           <div class="fenix header">
+             <span>Stock symbol: <span data-bind="text: selectedCompany().symbol(),"></span></span>
+             <span class="stockWindowClose"
+                   data-bind="click: closeStockInfo">	&minus;</span>
+           </div>
+           
+           <a class="footer" target="_blank" href="http://share.robinhood.com/shuchenl">
+             <span class="text fenix"> Get free stock at&nbsp;</span>
+             <img class="rblogo" src="./img/robinhood.png">
+           </a>
+      </div>
+      
     </div>
     
+    
     <script src="./js/Map.js"></script>
+    <script src="./js/va.js"></script>
     <script src="./js/Model.js"></script>
     <script src="./js/View.js"></script>
     <script src="./js/ViewModel.js"></script>

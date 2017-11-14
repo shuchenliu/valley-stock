@@ -30,9 +30,9 @@ class Company{
     this.icon = ko.observable(data.icon);
     this.loc = ko.observable(data.loc);
     this.address = ko.observable(data.address);
-    
-    this.showDetails = ko.observable(false);
-    
+    this.symbol = ko.observable(data.symbol);
+
+    this.showDetails = ko.observable(false);    
     this.selected = ko.observable(false);
     
     this.toggleSelected = () => {
@@ -74,6 +74,7 @@ const companies = [
     },
     address: '1 Hacker Way',
     city: 'Menlo Park',
+    symbol: 'FB',
   },
   {
     name: 'Google',
@@ -85,6 +86,7 @@ const companies = [
     },
     address: '1600 Amphitheatre Pkwy',
     city: 'Mountain View',
+    symbol: 'GOOGL',
   },
   {
     name: 'Netflix',
@@ -96,6 +98,7 @@ const companies = [
     },
     address: '100 Winchester Cir',
     city: 'Las Gatos',
+    symbol: 'NFLX',
   },
   {
     name: 'Apple',
@@ -107,6 +110,7 @@ const companies = [
     },
     address: '1 Infinite Loop',
     city: 'Cupertino',
+    symbol: 'AAPL',
   },
   {
     name: 'Cisco',
@@ -118,6 +122,7 @@ const companies = [
     },
     address: '170 W Tasman Dr',
     city: 'San Jose',
+    symbol: 'CSCO',
   },
   {
     name: 'Twitter',
@@ -129,6 +134,7 @@ const companies = [
     },
     address: '1355 Market St',
     city: 'San Francisco',
+    symbol: 'TWTR',
   },
   {
     name: 'Yelp',
@@ -140,6 +146,7 @@ const companies = [
     },
     address: '140 New Montgomery St',
     city: 'San Francisco',
+    symbol: 'YELP',
   },
   {
     name: 'Square',
@@ -151,6 +158,7 @@ const companies = [
     },
     address: '1455 Market St',
     city: 'San Francisco',
+    symbol: 'SQ',
   },
   {
     name: 'Zynga',
@@ -162,6 +170,7 @@ const companies = [
     },
     address: '699 8th St',
     city: 'San Francisco',
+    symbol: 'ZNGA',
   },
 ];
 
