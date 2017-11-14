@@ -22,8 +22,7 @@ Valley Stock is a simple web app that conveniently tracks Silicon Vally public c
 4. When a company's marker or listing is clicked, map will automatically zoom in and pan to the marker and stock price tracker will appear.
 5. The tracker contains 2 types of prices repectively from last trading day and last trading minute.
 
-!["The snapshot"][snapshot]
-[snapshot]: ./snapshot.png
+!["The snapshot"](https://github.com/shuchenliu/valley-stock/blob/master/snapshot.png?raw=true)
 
 ### Dependency
 [**Google Maps JavaScipt API**](https://developers.google.com/maps/documentation/javascript/tutorial) v3.30
