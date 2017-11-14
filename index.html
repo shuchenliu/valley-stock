@@ -12,7 +12,7 @@
     <link rel="stylesheet" 
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     
-    <link href="https://fonts.googleapis.com/css?family=Fenix|Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fenix|Lobster|Vollkorn+SC|Forum" rel="stylesheet">
     <script
       src="https://code.jquery.com/jquery-3.1.1.min.js"
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -134,8 +134,48 @@
                    data-bind="click: closeStockInfo">	&minus;</span>
            </div>
            
+           <div class="dataContent">
+              <div class="contentBox">
+                <div class="contentHeader fenix">
+                  Last trading day:
+                </div>
+                <ul class="dataList vsc" data-bind="foreach: Object.keys(dailyData().data)">
+                  <li class="entry" data-bind="with: $data">
+                    <span data-bind="text: $data"></span>
+                    <span data-bind="text: dailyData().data[$data]"></span>
+                  </li>
+                </ul>
+                <div class="refreshedTime forum" data-bind="with: dailyData().lastRefreshed">
+                  Last refreshed: <span data-bind="text: $data === undefined ? '' : $data"></span>
+                </div>
+              </div>
+              
+              
+              
+              <div class="border">
+                
+              </div>
+              
+              <div class="contentBox">
+                <div class="contentHeader fenix">
+                  Last trading minute:
+                </div>
+                <ul class="dataList vsc" data-bind="foreach: Object.keys(minuteData().data)">
+                  <li class="entry" data-bind="with: $data">
+                    <span data-bind="text: $data"></span>
+                    <span data-bind="text: minuteData().data[$data]"></span>
+                  </li>
+                </ul>
+                <div class="refreshedTime forum" data-bind="with: minuteData().lastRefreshed">
+                  Last refreshed: <span data-bind="text: $data === undefined ? '' : $data"></span>
+                </div>
+              </div>
+           </div>
+           <div class="unit vsc">
+              all price in usd
+           <div>
            <a class="footer" target="_blank" href="http://share.robinhood.com/shuchenl">
-             <span class="text fenix"> Get free stock at&nbsp;</span>
+             <span class="text fenix"> Get free stocks at&nbsp;</span>
              <img class="rblogo" src="./img/robinhood.png">
            </a>
       </div>

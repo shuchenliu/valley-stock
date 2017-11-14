@@ -42,6 +42,10 @@ and (min-device-width : 320px)
   }
 } 
 
+ul {
+  list-style-type: none;
+}
+
 .navbar {
   z-index: 2;
   display:inline;
@@ -282,21 +286,18 @@ and (min-device-width : 320px)
 
 .stockInfo {
   background-color: white;
-  width: 300px;
+  width: 350px;
   border-radius: 5px;
   z-index: 3 ;
   bottom: 5%;
-  height: 200px;
+  height: 250px;
   position: fixed;
-  
-  transition: all 0.5s ease-in;
-  visibility: visible;
   
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-shadow: .5px .5px .5px grey;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .hidden.stockInfo {
@@ -315,12 +316,14 @@ and (min-device-width : 320px)
   
   background-color: #1DA1F2;
   color:white;
+  flex-grow: 1;
+  
 }
 
 .stockWindowClose {
   font-size: 30px;
   color: white;
-  transition: all 0.1s linear;
+  transition: all 0.32s linear;
 }
 
 .stockWindowClose:hover {
@@ -339,15 +342,86 @@ and (min-device-width : 320px)
   bottom: 0;
   padding: 5px;
   background-color: #e5e6e8;
+
+  flex-grow: 1;
 }
 
-.rblogo {
-  height: 100%
+
+
+.dataContent {
+  flex-grow: 5;
+  
+  display: flex;
+  flex-flow: row;
 }
+
+.contentBox {
+  width: 50%;
+  height: 100%;
+  
+  display: flex;
+  flex-flow: column;
+  padding: 10px;
+  flex-wrap: nowrap;
+}
+
+.contentHeader {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.border {
+  border-right: 2px solid #c8cace;
+  height: 100px !important;
+  width: 3px !important;
+  margin-top: 50px;
+}
+
+.stockInfo .rblogo {
+  height: 100%;
+  
+}
+
 
 .footer .text {
   display: flex;
   flex-direction: column;
   justify-content: center;
   color:#23CD99;
+  font-size: 15px;
+}
+
+
+.dataList {
+  padding-left: 5px;
+}
+
+.entry {
+  display:flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+
+.refreshedTime {
+  font-size: 8px;
+  text-align: right;
+}
+
+.hidden.refreshedTime {
+  visibility: hidden;
+  height: 0;
+}
+
+.unit {
+  font-size: 10px;
+  text-align:center;
+}
+
+.vsc {
+  font-family: 'Vollkorn SC', serif;
+}
+
+.forum {
+  font-family: 'Forum', cursive;
 }

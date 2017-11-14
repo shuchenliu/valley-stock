@@ -88,6 +88,8 @@ const ViewModel = () => {
     google.maps.event.addListener(map, 'zoom_changed', () => {
       if (map.getZoom() === 10) {
         self.hideStockInfo(true);
+        self.dailyDataLoaded(false);
+        self.minuteDataLoaded(false);
         self.selectedCompany(self.companyList()[0]);
         allMarkers.forEach(marker => {
           marker.setOpacity(1);
@@ -117,6 +119,8 @@ const ViewModel = () => {
     
     self.panToCompany = company => {
       // Set up marker opacity change
+      self.dailyDataLoaded(false);
+      self.minuteDataLoaded(false);
       self.selectedCompany(company);
       const marker = company.marker;
 
@@ -151,6 +155,20 @@ const ViewModel = () => {
     // Stock Info module
     
     self.hideStockInfo = ko.observable(true);
+    self.dailyDataLoaded = ko.observable(false);
+    self.minuteDataLoaded = ko.observable(false);
+    
+    self.minuteData = ko.observable({data: {}});
+    self.dailyData = ko.observable({data: {}});
+    
+    self.setData = (data, index) => {
+      
+      if (index === 0) {
+        self.minuteData(data);
+      } else {
+        self.dailyData(data);
+      }
+    }
     
     self.closeStockInfo = () => {
       self.hideStockInfo(true);
@@ -158,29 +176,79 @@ const ViewModel = () => {
     
     self.generateStockInfo = company => {
       
-      const errorHandle = e => {
-        console.log(e);
+      // index: 0 - 1-min trading interval
+      // index: 1 - Daily
+      
+      // print error message
+      const errorHandle = (e, index) => {
+        //console.log(e);
+        self.setData({
+          data: {
+            error: e.message,
+          }
+        }, index);
         self.hideStockInfo(false);
       }
       
-      const handleData = data => {
-        console.log(data);
+      //print data
+      const handleData = (data, index) => {
+        //console.log(data);
+        const handle = index === 0 ? 'Time Series (1min)' : 'Time Series (Daily)';
+        
+        const lastRefreshed = data['Meta Data']['3. Last Refreshed'];
+        const lastPrice = data[handle][lastRefreshed];
+        
+        //console.log(lastMinutePrice);
+        
+        // Processing data fetched
+        let newData = {};
+        
+        for (let prop in lastPrice) {
+          const newKey = prop.slice(3);
+          newData[newKey] = lastPrice[prop];
+        }
+        
+        const dataPack = {
+          data: newData,
+          lastRefreshed: lastRefreshed,
+        };
+        self.setData(dataPack, index);
         self.hideStockInfo(false);
       }
       
       
-      // `getStock` method is defined in va.js  
-      getStock(company.symbol())
+      // `getStock` methods are defined in va.js  
+      
+      getLastMinuteStock(company.symbol())
       .then(data => {
         // not necessarily juice, could contain parameter-related error
         if (data['Error Message']) {
-          errorHandle(new Error(data['Error Message']));
+          errorHandle(new Error(data['Error Message']), 0);
         } else {
-          handleData(data);
+          handleData(data, 0);
         }
       }).catch(e => {
         // it could be the network or server, let's handle it either way
-        errorHandle(e);
+        errorHandle(e, 0);
+      }).then(() => {
+        self.minuteDataLoaded(true);
+      })
+      ;
+      
+      
+      getLastDayStock(company.symbol())
+      .then(data => {
+        // not necessarily juice, could contain parameter-related error
+        if (data['Error Message']) {
+          errorHandle(new Error(data['Error Message']), 1);
+        } else {
+          handleData(data, 1);
+        }
+      }).catch(e => {
+        // it could be the network or server, let's handle it either way
+        errorHandle(e, 1);
+      }).then(() => {
+        self.dailyDataLoaded(true);
       })
       ;
     }
