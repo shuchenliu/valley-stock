@@ -5,13 +5,12 @@ Valley Stock is a simple web app that conveniently tracks Silicon Vally public c
 ### How
 
 1. Run locally   
- i) 
- > git   clone https://github.com/shuchenliu/valley-stock.git  
- > cd   valley-stock
- 
+   i) run `git   clone https://github.com/shuchenliu/valley-stock.git`   
   ii) open `index.html` with any modern browser.  
   
   **Or you can:** 
+  
+  
 2. Visit [Vally Stock](https://shuchenliu.github.io/valley-stock) , which is publicly hosted via Github.io.
 
 ### What
