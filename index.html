@@ -139,7 +139,7 @@
                 <div class="contentHeader fenix">
                   Last trading day:
                 </div>
-                <ul class="dataList vsc" data-bind="foreach: Object.keys(dailyData().data)">
+                <ul class="dataList vsc" data-bind="foreach: Object.keys(self.dailyData().data)">
                   <li class="entry" data-bind="with: $data">
                     <span data-bind="text: $data"></span>
                     <span data-bind="text: dailyData().data[$data]"></span>
@@ -160,7 +160,7 @@
                 <div class="contentHeader fenix">
                   Last trading minute:
                 </div>
-                <ul class="dataList vsc" data-bind="foreach: Object.keys(minuteData().data)">
+                <ul class="dataList vsc" data-bind="foreach: Object.keys(self.minuteData().data)">
                   <li class="entry" data-bind="with: $data">
                     <span data-bind="text: $data"></span>
                     <span data-bind="text: minuteData().data[$data]"></span>
