@@ -196,10 +196,15 @@ const ViewModel = () => {
       
       //print data
       const handleData = (data, index) => {
-        //console.log(data);
+        console.log(data);
         const handle = index === 0 ? 'Time Series (1min)' : 'Time Series (Daily)';
         
-        const lastRefreshed = data['Meta Data']['3. Last Refreshed'];
+        let lastRefreshed = data['Meta Data']['3. Last Refreshed'];
+        
+        if (index === 1) {
+          lastRefreshed = lastRefreshed.slice(0,10);
+        }
+        
         const lastPrice = data[handle][lastRefreshed];
         
         //console.log(lastMinutePrice);
