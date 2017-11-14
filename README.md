@@ -23,19 +23,19 @@ Valley Stock is a simple web app that conveniently tracks Silicon Vally public c
 
 !["The snapshot"](https://github.com/shuchenliu/valley-stock/blob/master/snapshot.png?raw=true)
 
-## Dependency
+## Dependencies
 
-[**Google Maps JavaScipt API**](https://developers.google.com/maps/documentation/javascript/tutorial) v3.30
+	[**Google Maps JavaScipt API**](https://developers.google.com/maps/documentation/javascript/tutorial) v3.30
 
-[**Semantic UI**](https://github.com/Semantic-Org/Semantic-UI) v2.2.12
+	[**Semantic UI**](https://github.com/Semantic-Org/Semantic-UI) v2.2.12
 
-[**jQUery**](https://jquery.com/) v3.2.1 (for Semantic UI use only)
+	[**jQUery**](https://jquery.com/) v3.2.1 (for Semantic UI use only)
 
-[**Alpha Vantage API**](https://www.alphavantage.co/documentation/)
+	[**Alpha Vantage API**](https://www.alphavantage.co/documentation/)
 
-[**Font Awesome**](http://fontawesome.io/) v4.7.0
+	[**Font Awesome**](http://fontawesome.io/) v4.7.0
 
-All companies' logos are from respective official websites and are trademarks.
+	All companies' logos are from respective official websites and are trademarks.
 
 ## Known Issues
 
