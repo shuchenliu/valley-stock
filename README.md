@@ -35,7 +35,7 @@ Valley Stock is a simple web app that conveniently tracks Silicon Vally public c
 
 [**Font Awesome**](http://fontawesome.io/) v4.7.0
 
-All companies' logos are from respective official website and are trademarks.
+All companies' logos are from respective official websites and are trademarks.
 
 ## Known Issues
 
