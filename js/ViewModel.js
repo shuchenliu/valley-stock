@@ -200,8 +200,10 @@ const ViewModel = () => {
         const handle = index === 0 ? 'Time Series (1min)' : 'Time Series (Daily)';
         
         let lastRefreshed = data['Meta Data']['3. Last Refreshed'];
+        let originalTime = lastRefreshed;
         
         if (index === 1) {
+          
           lastRefreshed = lastRefreshed.slice(0,10);
         }
         
@@ -219,7 +221,7 @@ const ViewModel = () => {
         
         const dataPack = {
           data: newData,
-          lastRefreshed: lastRefreshed,
+          lastRefreshed: originalTime,
         };
         
         self.setData(dataPack, index);
