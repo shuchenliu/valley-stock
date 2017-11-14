@@ -181,11 +181,12 @@ const ViewModel = () => {
       
       // print error message
       const errorHandle = (e, index) => {
-        //console.log(e);
+        console.log(e);
         self.setData({
           data: {
-            error: e.message,
-          }
+          
+          },
+          error: e.message,
         }, index);
         self.hideStockInfo(false);
       }
@@ -266,5 +267,8 @@ function startApp() {
     $('#search-select')
       .dropdown()
     ;
-    
 };
+
+function handleMapError() {
+  alert('Cannot connect to Google, please try again later');
+}

@@ -408,6 +408,11 @@ ul {
   padding-left: 5px;
 }
 
+.datalist.hidden {
+  visibility: hidden;
+  height: 0;
+}
+
 .entry {
   display:flex;
   flex-flow: row;
@@ -436,4 +441,18 @@ ul {
 
 .forum {
   font-family: 'Forum', cursive;
+}
+
+.hidden.errorInfo {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.errorTitle{
+  margin-bottom: 0;
+}
+
+.errorContent {
+  font-size: 10px;
 }

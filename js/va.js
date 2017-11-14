@@ -21,7 +21,7 @@ const getLastDayStock = symbol => {
   const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=J1DTQRI3GZ8PKZ8K`;
   
   // network test
-  //const url = 'https://httpstat.us/500';
+  // const url = 'https://httpstat.us/500';
   return fetch(url).then(r => {
     // Something in the json at least
     if(r.ok) {

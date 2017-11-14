@@ -139,12 +139,24 @@
                 <div class="contentHeader fenix">
                   Last trading day:
                 </div>
-                <ul class="dataList vsc" data-bind="foreach: Object.keys(self.dailyData().data)">
+                <ul class="dataList vsc" 
+                    data-bind="foreach: Object.keys(self.dailyData().data),
+                               css: {hidden: dailyData().error !== undefined}">
                   <li class="entry" data-bind="with: $data">
                     <span data-bind="text: $data"></span>
                     <span data-bind="text: dailyData().data[$data]"></span>
                   </li>
                 </ul>
+                <div class="errorInfo hidden"
+                     data-bind="css: {hidden: dailyData().error === undefined}">
+                     <p class="errorTitle vsc">
+                       Error....
+                     </p>
+                     <p class="errorContent forum">
+                       I guess this is what you get for using free APIs... 
+                       Check console for more info.
+                     </p>
+                </div>
                 <div class="refreshedTime forum" data-bind="with: dailyData().lastRefreshed">
                   Last refreshed: <span data-bind="text: $data === undefined ? '' : $data"></span>
                 </div>
@@ -160,12 +172,24 @@
                 <div class="contentHeader fenix">
                   Last trading minute:
                 </div>
-                <ul class="dataList vsc" data-bind="foreach: Object.keys(minuteData().data)">
+                <ul class="dataList vsc" 
+                    data-bind="foreach: Object.keys(minuteData().data),
+                               css: {hidden: minuteData().error !== undefined}">
                   <li class="entry" data-bind="with: $data">
                     <span data-bind="text: $data"></span>
                     <span data-bind="text: minuteData().data[$data]"></span>
                   </li>
                 </ul>
+                <div class="errorInfo hidden"
+                     data-bind="css: {hidden: minuteData().error === undefined}">
+                     <p class="errorTitle vsc">
+                       Error....
+                     </p>
+                     <p class="errorContent forum">
+                       I guess this is what you get for using free APIs... 
+                       Check console for more info.
+                     </p>
+                </div>
                 <div class="refreshedTime forum" data-bind="with: minuteData().lastRefreshed">
                   Last refreshed: <span data-bind="text: $data === undefined ? '' : $data"></span>
                 </div>
@@ -188,7 +212,8 @@
     <script src="./js/Model.js"></script>
     <script src="./js/View.js"></script>
     <script src="./js/ViewModel.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWvzz43sL2Z2Kp_n9Zzkb4liGwgIxQxzM&callback=startApp"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWvzz43sL2Z2Kp_n9Zzkb4liGwgIxQxzM&callback=startApp&"
+    onerror="handleMapError()"
     async defer></script>
   </body>
 </html>
