@@ -76,11 +76,14 @@ const ViewModel = () => {
       }
       
       
+      
       marker.addListener('click', function(e) {
         // Pan to company selected
         self.panToCompany(eachCompany);
         self.generateStockInfo(eachCompany);
       });
+      
+      
     });
     
     

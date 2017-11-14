@@ -58,6 +58,14 @@ class Company{
       content: contentString,
     });
     
+    
+    
+    const marker = this.marker;
+    marker.addListener('click', function() {
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+      setTimeout(function(){ marker.setAnimation(null); }, 3000);
+    });
+    
   }  
 }
 
