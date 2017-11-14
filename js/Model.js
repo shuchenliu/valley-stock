@@ -61,9 +61,11 @@ class Company{
     
     
     const marker = this.marker;
+    
+    //Animation
     marker.addListener('click', function() {
       marker.setAnimation(google.maps.Animation.BOUNCE);
-      setTimeout(function(){ marker.setAnimation(null); }, 3000);
+      setTimeout(function(){ marker.setAnimation(null); }, 700 * 3);
     });
     
   }  
