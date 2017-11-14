@@ -2,7 +2,7 @@
 
 Valley Stock is a simple web app that conveniently tracks Silicon Vally public companies' stock prices in real time.
 
-### How
+## How
 
 1. Run locally   
    i) run `git   clone https://github.com/shuchenliu/valley-stock.git`   
@@ -13,7 +13,7 @@ Valley Stock is a simple web app that conveniently tracks Silicon Vally public c
   
 2. Visit [Vally Stock](https://shuchenliu.github.io/valley-stock) , which is publicly hosted via Github.io.
 
-### What
+## What
 
 1.  There are **9** companies from **6** valley cities currently covered by Valley-Stock.
 2. The app offers a search-selection filter, which could be easily used to filter out target companies by city.
@@ -23,7 +23,8 @@ Valley Stock is a simple web app that conveniently tracks Silicon Vally public c
 
 !["The snapshot"](https://github.com/shuchenliu/valley-stock/blob/master/snapshot.png?raw=true)
 
-### Dependency
+## Dependency
+
 [**Google Maps JavaScipt API**](https://developers.google.com/maps/documentation/javascript/tutorial) v3.30
 
 [**Semantic UI**](https://github.com/Semantic-Org/Semantic-UI) v2.2.12
@@ -32,13 +33,19 @@ Valley Stock is a simple web app that conveniently tracks Silicon Vally public c
 
 [**Alpha Vantage API**](https://www.alphavantage.co/documentation/)
 
-### Known Issues
+[**Font Awesome**](http://fontawesome.io/) v4.7.0
+
+All companies' logos are from respective official website and are trademarks.
+
+## Known Issues
+
 The `Alpha Vantage` API will sometimes:       
 	1. throw `invalid paramter error` even if all parameters provided are valid **and/or**  
 	2. return empty json even if API call has been properly issued.
 
 These errors are handled. Please check browser console when encountered for more info.
 
-### Future Development
+## Future Development
+
 1. Add interactive charts using `D3` or `HighCharts`
 2. Rewrite application using `ReactJS`.
