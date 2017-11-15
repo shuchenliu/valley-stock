@@ -32,43 +32,37 @@ class Company{
     this.address = ko.observable(data.address);
     this.symbol = ko.observable(data.symbol);
 
-    this.showDetails = ko.observable(false);    
+    this.showDetails = ko.observable(false);
     this.selected = ko.observable(false);
-    
+
     this.toggleSelected = () => {
       this.selected(!this.selected());
     };
-    
+
     // Create marker for each company
     const icon = {
       url: data.icon.url,
       scaledSize: new google.maps.Size(data.icon.width, data.icon.height),
     };
-    
+
     this.marker = new google.maps.Marker({
       map: map,
       position: data.loc,
       title: data.name,
       icon: icon,
     });
-    
+
     // Create info window for each markers
     const contentString = `<div class="nameTag lobster">${this.name()}</div>`;
     this.infoWindow = new google.maps.InfoWindow({
       content: contentString,
     });
-    
-    
-    
+
+
+
     const marker = this.marker;
-    
-    //Animation
-    marker.addListener('click', function() {
-      marker.setAnimation(google.maps.Animation.BOUNCE);
-      setTimeout(function(){ marker.setAnimation(null); }, 700 * 3);
-    });
-    
-  }  
+
+  }
 }
 
 
@@ -183,14 +177,3 @@ const companies = [
     symbol: 'ZNGA',
   },
 ];
-
-
-
-
-
-
-
-
-
-
-

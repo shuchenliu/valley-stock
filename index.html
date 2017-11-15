@@ -2,40 +2,40 @@
 <html>
   <head>
     <title>Valley Stock</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1" >
+    <meta charset="utf-8" >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
     <link rel = "stylesheet"
           type = "text/css"
           href = "./css/style.css" />
-          
-    <link rel="stylesheet" 
+
+    <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    
-    <link href="https://fonts.googleapis.com/css?family=Fenix|Lobster|Vollkorn+SC|Forum" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Fenix|Lobster|Vollkorn+SC|Forum" rel="stylesheet" />
     <script
       src="https://code.jquery.com/jquery-3.1.1.min.js"
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
       crossorigin="anonymous"></script>
 
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui-css@2.2.12/semantic.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui-css@2.2.12/semantic.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui-css@2.2.12/semantic.min.js"></script>
   </head>
-  
-  
+
   <body>
 
-    <div class='sidebar hide'>
+  <div class='sidebar hide' data-bind="css: {hide: self.shouldSideBarHide}">
       <a class='closeButton'
          data-bind="event: {
                   click: () => {
                     toggleDetails(undefined);
+                    toggleSidebar();
                   },
                 }">
         &times;
       </a>
-      
+
       <ul data-bind="foreach: filteredCompanyList">
         <li class="holder"
             data-bind="event: {
@@ -45,7 +45,7 @@
                       }">
             <span data-bind="text: name"
                class="item fenix">
-            </span> 
+            </span>
         </li>
         <li class="hidden info"
             data-bind="
@@ -67,7 +67,7 @@
               class="addr fenix"
               data-bind="text: $data.address()"></span>
               <i class="fa fa-chevron-right fa-lg" aria-hidden="true"></i>
-            </span>  
+            </span>
         </li>
       </ul>
       <select class="ui search selection dropdown fenix" id="search-select"
@@ -75,145 +75,152 @@
                          value: selected,
                          optionsCaption: 'filter by city',
                          ">
-        
+
       </select>
     </div>
-   <div id="map"></div>
-    <div class="page">
-      
-      <div class='navbar'>
-        <ul>
-            <li id='filter'>
-              <a class="icons" data-bind="event: {
-                       click: () => {
-                         toggleDetails(currentCompany);
-                       },
-                     }">
-                <i class="fa fa-filter" aria-hidden="true"></i>
-                <span class="desktop fenix">filter</span>
-                
-              </a>
-            </li>
-            <li>
-        </ul>
-        <ul class='sign'>
-                <span class="desktop lobster">Valley Companies' Stock Price</span>
-                <span class="mobile lobster">Valley Stock</span>
-                <span class="superMobile lobster">VS</span>
-            </li>  
-        </ul>
-    
-        <ul>
-            <li class="button">
-              <a class="btn btn-primary" target="_blank" href="https://www.linkedin.com/in/shuchenliu" >
-                <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
-              </a>
-            </li>
-            
-            <li class="button">
-              <a class="btn btn-primary" target="_blank" href="https://github.com/shuchenliu" >
-                <i class="fa fa-github-square fa-lg" aria-hidden="true"></i>
-              </a>
-            </li>
-            
-            <li class="button">
-              <a class="btn btn-primary" target="_blank" href="https://github.com/shuchenliu/valley-stock" >
-                  <i class="fa fa-code fa-1x" aria-hidden="true"></i>
-              </a>
-            </li>         
-        </ul>
-      </div>
-      <div class="hidden stockInfo"
-           data-bind="
-           css: {
-             hidden: hideStockInfo,
-           }">
-           <div class="fenix header">
-             <span>Stock symbol: <span data-bind="text: selectedCompany().symbol(),"></span></span>
-             <span class="stockWindowClose"
-                   data-bind="click: closeStockInfo">	&minus;</span>
-           </div>
-           
-           <div class="dataContent">
-              <div class="contentBox">
-                <div class="contentHeader fenix">
-                  Last trading day:
-                </div>
-                <ul class="dataList vsc" 
-                    data-bind="foreach: Object.keys(self.dailyData().data),
-                               css: {hidden: self.dailyData().error !== undefined}">
-                  <li class="entry" data-bind="with: $data">
-                    <span data-bind="text: $data"></span>
-                    <span data-bind="text: dailyData().data[$data]"></span>
-                  </li>
-                </ul>
-                <div class="errorInfo hidden"
-                     data-bind="css: {hidden: self.dailyData().error === undefined}">
-                     <p class="errorTitle vsc">
-                       Error....
-                     </p>
-                     <p class="errorContent forum">
-                       I guess this is what you get for using free APIs... 
-                       Check console for more info.
-                     </p>
-                </div>
-                <div class="refreshedTime forum" data-bind="with: dailyData().lastRefreshed">
-                  Last refreshed: <span data-bind="text: $data === undefined ? '' : $data"></span>
-                </div>
-              </div>
-              
-              
-              
-              <div class="border">
-                
-              </div>
-              
-              <div class="contentBox">
-                <div class="contentHeader fenix">
-                  Last trading minute:
-                </div>
-                <ul class="dataList vsc" 
-                    data-bind="foreach: Object.keys(minuteData().data),
-                               css: {hidden: self.minuteData().error !== undefined}">
-                  <li class="entry" data-bind="with: $data">
-                    <span data-bind="text: $data"></span>
-                    <span data-bind="text: minuteData().data[$data]"></span>
-                  </li>
-                </ul>
-                <div class="errorInfo hidden"
-                     data-bind="css: {hidden: self.minuteData().error === undefined}">
-                     <p class="errorTitle vsc">
-                       Error....
-                     </p>
-                     <p class="errorContent forum">
-                       I guess this is what you get for using free APIs... 
-                       Check console for more info.
-                     </p>
-                </div>
-                <div class="refreshedTime forum" data-bind="with: minuteData().lastRefreshed">
-                  Last refreshed: <span data-bind="text: $data === undefined ? '' : $data"></span>
-                </div>
-              </div>
-           </div>
-           <div class="unit vsc">
-              all prices in usd
-           <div>
-           <a class="footer" target="_blank" href="http://share.robinhood.com/shuchenl">
-             <span class="text fenix"> Get free stocks at&nbsp;</span>
-             <img class="rblogo" src="./img/robinhood.png">
-           </a>
-      </div>
-      
+  <div id="map" data-bind="click: clickMapToHideSidebar"></div>
+
+
+  <div class="page">
+    <div class='navbar'>
+      <ul data-bind="click: toggleSidebar">
+          <li id='filter'>
+            <a class="icons" data-bind="event: {
+                     click: () => {
+                       toggleDetails(currentCompany);
+                     },
+                   }">
+              <i class="fa fa-filter" aria-hidden="true"></i>
+              <span class="desktop fenix">filter</span>
+
+            </a>
+          </li>
+      </ul>
+      <ul class='sign'>
+          <li>
+              <span class="desktop lobster">Valley Companies' Stock Price</span>
+              <span class="mobile lobster">Valley Stock</span>
+              <span class="superMobile lobster">VS</span>
+          </li>
+      </ul>
+
+      <ul>
+          <li class="button">
+            <a class="btn btn-primary" target="_blank" href="https://www.linkedin.com/in/shuchenliu" >
+              <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
+            </a>
+          </li>
+
+          <li class="button">
+            <a class="btn btn-primary" target="_blank" href="https://github.com/shuchenliu" >
+              <i class="fa fa-github-square fa-lg" aria-hidden="true"></i>
+            </a>
+          </li>
+
+          <li class="button">
+            <a class="btn btn-primary" target="_blank" href="https://github.com/shuchenliu/valley-stock" >
+                <i class="fa fa-code fa-1x" aria-hidden="true"></i>
+            </a>
+          </li>
+      </ul>
     </div>
-    
-    
+    <div class="hidden stockInfo" data-bind=" css: {hidden: hideStockInfo}">
+
+         <div class="fenix header">
+           <span>Stock symbol: <span data-bind="text: selectedCompany().symbol(),"></span></span>
+           <span class="stockWindowClose"
+                 data-bind="click: closeStockInfo">	&minus;</span>
+         </div>
+
+         <div class="dataContent">
+            <div class="contentBox">
+
+              <div class="contentHeader fenix">
+                Last trading day:
+              </div>
+
+              <ul class="dataList vsc"
+                  data-bind="foreach: Object.keys(self.dailyData().data),
+                             css: {hidden: self.dailyData().error !== undefined}">
+                <li class="entry" data-bind="with: $data">
+                  <span data-bind="text: $data"></span>
+                  <span data-bind="text: dailyData().data[$data]"></span>
+                </li>
+              </ul>
+
+              <div class="errorInfo hidden" data-bind="css: {hidden: self.dailyData().error === undefined}">
+                   <p class="errorTitle vsc">
+                     Error....
+                   </p>
+                   <p class="errorContent forum">
+                     I guess this is what you get for using free APIs...
+                     Check console for more info.
+                   </p>
+             </div>
+             <div class="refreshedTime forum" data-bind="with: dailyData().lastRefreshed">
+               Last refreshed: <span data-bind="text: $data === undefined ? '' : $data"></span>
+             </div>
+           </div>
+
+
+
+           <div class="border">
+
+           </div>
+
+           <div class="contentBox">
+             <div class="contentHeader fenix">
+               Last trading minute:
+             </div>
+             <ul class="dataList vsc"
+                 data-bind="foreach: Object.keys(minuteData().data),
+                            css: {hidden: self.minuteData().error !== undefined}">
+               <li class="entry" data-bind="with: $data">
+                 <span data-bind="text: $data"></span>
+                 <span data-bind="text: minuteData().data[$data]"></span>
+               </li>
+             </ul>
+             <div class="errorInfo hidden" data-bind="css: {hidden: self.minuteData().error === undefined}">
+                  <p class="errorTitle vsc">
+                    Error....
+                  </p>
+                  <p class="errorContent forum">
+                    I guess this is what you get for using free APIs...
+                    Check console for more info.
+                  </p>
+              </div>
+              <div class="refreshedTime forum" data-bind="with: minuteData().lastRefreshed">
+                Last refreshed: <span data-bind="text: $data === undefined ? '' : $data"></span>
+              </div>
+             </div>
+       </div>
+
+
+       <div class="unit vsc">
+          all prices in usd
+        </div>
+       <div class="">
+         <a class="footer" target="_blank" href="http://share.robinhood.com/shuchenl">
+           <span class="text fenix"> Get free stocks at&nbsp;</span>
+           <img class="rblogo" src="./img/robinhood.png" alt="Robinhood Logo">
+         </a>
+       </div>
+
+
+
+    </div>
+  </div>
+
+
+
     <script src="./js/Map.js"></script>
     <script src="./js/va.js"></script>
     <script src="./js/Model.js"></script>
-    <script src="./js/View.js"></script>
     <script src="./js/ViewModel.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWvzz43sL2Z2Kp_n9Zzkb4liGwgIxQxzM&callback=startApp&"
     onerror="handleMapError()"
     async defer></script>
+
+
   </body>
 </html>
